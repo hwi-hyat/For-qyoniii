@@ -1,0 +1,1 @@
+cat /etc/passwd | grep -v "#" | awk 'NR % 2 == 0' | cut -d ':' -f1 | rev | sort -r | awk -v from=$FT_LINE1 -v to=$FT_LINE2 'NR==from,NR==to' | tr '\n' ','| sed 's/,/, /g' | sed 's/, *$/\./' | tr -d '\n'
