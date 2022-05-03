@@ -17,21 +17,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_info			//지도의 기본적인 정보들을 저장해놓는 구조체
+typedef struct s_info
 {
-	char	empty;				//빈칸을 어떤 문자로 나타냈는지
-	char	obs;				//장애물을 어떤 문자로 나타냈는지
-	char	full;				//가장 큰 정사각형을 표현 할 때 어떤 문자로 나타냈는지
-	int		wid;				//입력받은 지도의 너비
-	int		len;				//입력받은 지도의 길이
+	char	empty;
+	char	obs;
+	char	full;
+	int		wid;
+	int		len;
 
 }t_info;
 
-typedef struct s_max			//가장 큰 정사각형의 정보를 저장하는 구조체, 가장 왼쪽 위 시작좌표와 크기를 저장
+typedef struct s_max
 {
-	int	start_x;				//시작좌표의 x좌표
-	int	start_y;				//시작좌표의 y좌표
-	int	max_size;				//가장 큰 사각형의 한 변의 길이
+	int	start_x;
+	int	start_y;
+	int	max_size;
 }t_max;
 
 typedef struct s_coordinate

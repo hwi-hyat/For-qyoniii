@@ -12,7 +12,7 @@
 
 #include "myheader.h"
 
-void	init_info(t_info *p_info)			//구조체 info안의 값들을 초기화 해 줌
+void	init_info(t_info *p_info)
 {
 	p_info -> empty = '\0';
 	p_info -> full = '\0';
@@ -21,7 +21,7 @@ void	init_info(t_info *p_info)			//구조체 info안의 값들을 초기화 해 
 	p_info -> len = 0;
 }
 
-void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을 할당해제하는 함수
+void	free_map(char **map, t_info *info)
 {
 	int	i;
 
@@ -34,13 +34,13 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 	free(map);
 }
 
-void	print_error_msg(void)				//에러가 발생했을 때 에러메세지를 출력하는 함수
+void	print_error_msg(void)
 {
 	write(1, "map error\n", 10);
 	exit(0);
 }
 
-void	find_and_print(char *filename, t_info *info)	//파일 이름을 넘겨주면 해당하는 파일에서 지도를 불러오고 가장 큰 사각형을 찾아 저장하는 함수
+void	find_and_print(char *filename, t_info *info
 {
 	char	**map;
 
@@ -60,7 +60,7 @@ int	main(int argc, char *argv[])
 	t_info	info;
 
 	init_info(&info);
-	if (argc == 1)										//지도 파일이 주어지지 않았을때
+	if (argc == 1)
 	{
 		if (make_input_file() == 0)
 			print_error_msg();
@@ -69,7 +69,7 @@ int	main(int argc, char *argv[])
 		find_and_print("temptson", &info);
 	}
 	argv_idx = 1;
-	while (argv_idx < argc)								//지도 파일이 주어졌을때
+	while (argv_idx < argc)
 	{
 		init_info(&info);
 		if (check_input(argv[argv_idx], &info) == 0)
