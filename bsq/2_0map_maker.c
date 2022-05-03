@@ -6,13 +6,13 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:35:39 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/03 21:42:13 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 23:33:00 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myheader.h"
 
-void	first_column_skipper(int fd)
+void	first_line_skip(int fd)
 {
 	char	temp;
 
@@ -21,7 +21,7 @@ void	first_column_skipper(int fd)
 		read(fd, &temp, 1);
 }
 
-void	row_parcer(int fd, char *map_row)
+void	line_copy_map(int fd, char *map_row)
 {
 	int		i;
 	char	temp;
@@ -37,7 +37,7 @@ void	row_parcer(int fd, char *map_row)
 	map_row[i] = 0;
 }
 
-int	parcer(char **map, char *argv, int length)
+int	copy_map(char **map, char *argv, int length)
 {
 	int		i;
 	int		fd;
@@ -45,11 +45,11 @@ int	parcer(char **map, char *argv, int length)
 	fd = open(argv, O_RDWR);
 	if (fd < 0)
 		return (0);
-	first_column_skipper(fd);
+	first_line_skip(fd);
 	i = 0;
 	while (i < length)
 	{
-		row_parcer(fd, map[i]);
+		line_copy_map(fd, map[i]);
 		i++;
 	}
 	close(fd);
@@ -72,7 +72,7 @@ char	**map_mallocator(char *argv, t_info *info)
 			return (0);											//널가드 수정필요
 		i++;
 	}
-	if (parcer(map, argv, info->tall) == 0)
+	if (copy_map(map, argv, info->tall) == 0)
 		return (0);
 	return (map);
 }

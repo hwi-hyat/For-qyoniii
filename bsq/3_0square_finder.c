@@ -6,32 +6,32 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:09:24 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/03 21:33:00 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 23:38:49 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myheader.h"
 
-void	sq_check(char **map, t_info *map_info, t_max *max_sq, t_start co)
+void	sq_check(char **map, t_info *info, t_max *max_sq, t_start co)
 {
 	int	i;
 	int	size;
 
 	size = 1;
-	while (val_map_acc(co, size, map_info))
+	while (val_map_acc(co, size, info))
 	{
 		i = 0;
-		while (i < size && val_map_acc(co, size, map_info))
+		while (i < size && val_map_acc(co, size, info))
 		{
-			if (obs_chk(map[co.y + size - 1][co.x + i], map_info) == 0
-				|| obs_chk(map[co.y + i][co.x + size - 1], map_info) == 0)
+			if (map[co.y + size - 1][co.x + i] == info->obs
+				|| map[co.y + i][co.x + size - 1] == info->obs)
 			{
 				is_it_max(co, size - 1, max_sq);
 				return ;
 			}
 			i++;
 		}
-		if (val_map_acc(co, size, map_info) == 2)
+		if (val_map_acc(co, size, info) == 2)
 		{
 			is_it_max(co, size, max_sq);
 			return ;
@@ -40,21 +40,21 @@ void	sq_check(char **map, t_info *map_info, t_max *max_sq, t_start co)
 	}
 }
 
-void	finder(char **map, t_info *map_info, t_max *max_sq)
+void	finder(char **map, t_info *info, t_max *max_sq)
 {
 	int		i;
 	int		j;
 	t_start	co;
 
 	i = 0;
-	while (i < (map_info->tall - max_sq->max_size))
+	while (i < (info->tall - max_sq->max_size))
 	{
 		co.y = i;
 		j = 0;
-		while (j < (map_info->len - max_sq->max_size))
+		while (j < (info->len - max_sq->max_size))
 		{
 			co.x = j;
-			sq_check(map, map_info, max_sq, co);
+			sq_check(map, info, max_sq, co);
 			j++;
 		}
 		i++;
@@ -62,7 +62,7 @@ void	finder(char **map, t_info *map_info, t_max *max_sq)
 	return ;
 }
 
-void	square_filler(char **map, t_max *max_sq, t_info *map_info)
+void	square_filler(char **map, t_max *max_sq, t_info *info)
 {
 	int	i;
 	int	j;
@@ -73,21 +73,21 @@ void	square_filler(char **map, t_max *max_sq, t_info *map_info)
 		j = 0;
 		while (j < max_sq->max_size)
 		{
-			map[max_sq->max_y + i][max_sq->max_x + j] = map_info->fill;
+			map[max_sq->max_y + i][max_sq->max_x + j] = info->fill;
 			j++;
 		}
 		i++;
 	}
 }
 
-void	finder_main(char **map, t_info *map_info)
+void	finder_main(char **map, t_info *info)
 {	
 	t_max	max_sq;
 
 	max_sq.max_x = 0;
 	max_sq.max_y = 0;
 	max_sq.max_size = 0;
-	finder(map, map_info, &max_sq);
-	square_filler(map, &max_sq, map_info);
-	printer(map, map_info);
+	finder(map, info, &max_sq);
+	square_filler(map, &max_sq, info);
+	printer(map, info);
 }

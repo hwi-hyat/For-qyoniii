@@ -12,13 +12,6 @@
 
 #include "myheader.h"
 
-int	obs_chk(char c, t_info *map_info)
-{
-	if (c == map_info->obs)
-		return (0);
-	return (1);
-}
-
 void	is_it_max(t_start co, int size, t_max *max_sq)
 {
 	if (size > max_sq->max_size)
