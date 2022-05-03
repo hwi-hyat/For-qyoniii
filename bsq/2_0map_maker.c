@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:35:39 by siykim            #+#    #+#             */
-/*   Updated: 2022/02/24 12:08:58 by tson             ###   ########.fr       */
+/*   Updated: 2022/05/03 21:42:13 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ char	**map_mallocator(char *argv, t_info *info)
 	char	**map;
 
 	i = 0;
-	map = (char **)malloc(sizeof(char *) * (info->len + 1));
+	map = (char **)malloc(sizeof(char *) * (info->tall + 1));
 	if (map == NULL)
 		return (0);
-	while (i < (info->len + 1))
+	while (i < (info->tall + 1))
 	{
-		map[i] = (char *)malloc(sizeof(char) * (info->wid + 1));
+		map[i] = (char *)malloc(sizeof(char) * (info->len + 1));
 		if (map[i] == NULL)
-			return (0);
+			return (0);											//널가드 수정필요
 		i++;
 	}
-	if (parcer(map, argv, info->len) == 0)
+	if (parcer(map, argv, info->tall) == 0)
 		return (0);
 	return (map);
 }

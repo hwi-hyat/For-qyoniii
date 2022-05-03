@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:21:22 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 01:35:24 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 18:01:07 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	check_condition(char *str, t_info *p_info)
 		return (0);
 	if (input_three_condition(str, p_info, len) == 0)
 		return (0);
-	if (is_same_char(p_info -> full, p_info -> obs)
-		|| is_same_char(p_info -> full, p_info -> empty)
-		|| is_same_char(p_info -> obs, p_info -> empty))
+	if (p_info -> full == p_info -> obs
+		|| p_info -> full == p_info -> empty
+		|| p_info -> obs == p_info -> empty)
 		return (0);
 	idx = 0;
 	while (idx < len - 3)

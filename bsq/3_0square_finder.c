@@ -6,13 +6,13 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:09:24 by siykim            #+#    #+#             */
-/*   Updated: 2022/02/24 01:37:44 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 21:33:00 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myheader.h"
 
-void	sq_check(char **map, t_info *map_info, t_max *max_sq, t_co co)
+void	sq_check(char **map, t_info *map_info, t_max *max_sq, t_start co)
 {
 	int	i;
 	int	size;
@@ -44,14 +44,14 @@ void	finder(char **map, t_info *map_info, t_max *max_sq)
 {
 	int		i;
 	int		j;
-	t_co	co;
+	t_start	co;
 
 	i = 0;
-	while (i < (map_info->len - max_sq->max_size))
+	while (i < (map_info->tall - max_sq->max_size))
 	{
 		co.y = i;
 		j = 0;
-		while (j < (map_info->wid - max_sq->max_size))
+		while (j < (map_info->len - max_sq->max_size))
 		{
 			co.x = j;
 			sq_check(map, map_info, max_sq, co);
@@ -73,7 +73,7 @@ void	square_filler(char **map, t_max *max_sq, t_info *map_info)
 		j = 0;
 		while (j < max_sq->max_size)
 		{
-			map[max_sq->start_y + i][max_sq->start_x + j] = map_info->full;
+			map[max_sq->max_y + i][max_sq->max_x + j] = map_info->fill;
 			j++;
 		}
 		i++;
@@ -84,8 +84,8 @@ void	finder_main(char **map, t_info *map_info)
 {	
 	t_max	max_sq;
 
-	max_sq.start_x = 0;
-	max_sq.start_y = 0;
+	max_sq.max_x = 0;
+	max_sq.max_y = 0;
 	max_sq.max_size = 0;
 	finder(map, map_info, &max_sq);
 	square_filler(map, &max_sq, map_info);

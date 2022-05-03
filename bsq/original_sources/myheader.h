@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 01:38:12 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 18:01:15 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_coordinate
 }t_co;
 
 int		str_len(char *str);
-int		is_same_char(char c1, char c2);
 int		input_three_condition(char *str, t_info *p_info, int len);
 int		check_condition(char *str, t_info *p_info);
 int		check_first_line(char *str, t_info *p_info);

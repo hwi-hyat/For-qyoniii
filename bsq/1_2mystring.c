@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:07 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 12:39:27 by tson             ###   ########.fr       */
+/*   Updated: 2022/05/03 23:05:51 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,12 @@ int	str_len(char *str)
 	return (idx);
 }
 
-int	is_same_char(char c1, char c2)
-{
-	if (c1 == c2)
-		return (1);
-	return (0);
-}
-
 int	make_input_file(void)
 {
 	int		fd;
 	char	buf;
 
-	fd = open("temptson", O_RDWR | O_CREAT | O_TRUNC, 0777);
+	fd = open("AJTCS", O_RDWR | O_CREAT | O_TRUNC, 0777);
 	if (fd == -1)
 		return (0);
 	while (read(0, &buf, 1) != 0)

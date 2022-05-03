@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:16:44 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 12:39:33 by tson             ###   ########.fr       */
+/*   Updated: 2022/05/03 20:42:49 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_map(char **map, t_info *info)
 
 void	print_error_msg(void)
 {
-	write(1, "map error\n", 10);
+	write(2, "map error\n", 10);
 	exit(0);
 }
 
@@ -47,7 +47,7 @@ void	find_and_print(char *filename, t_info *info
 	map = map_mallocator(filename, info);
 	if (map == 0)
 	{
-		write(1, "map error\n", 10);
+		write(2, "map error\n", 10);
 		return ;
 	}
 	finder_main(map, info);
@@ -73,7 +73,7 @@ int	main(int argc, char *argv[])
 	{
 		init_info(&info);
 		if (check_input(argv[argv_idx], &info) == 0)
-			write(1, "map error\n", 10);
+			write(2, "map error\n", 10);
 		else
 			find_and_print(argv[argv_idx], &info);
 		if (argv_idx < argc - 1)

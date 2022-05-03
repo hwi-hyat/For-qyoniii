@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:16:44 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 12:39:33 by tson             ###   ########.fr       */
+/*   Updated: 2022/05/03 23:05:54 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	init_info(t_info *p_info)			//구조체 info안의 값들을 초기화 해 줌
 {
 	p_info -> empty = '\0';
-	p_info -> full = '\0';
+	p_info -> fill = '\0';
 	p_info -> obs = '\0';
-	p_info -> wid = 0;
 	p_info -> len = 0;
+	p_info -> tall = 0;
 }
 
 void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을 할당해제하는 함수
@@ -26,7 +26,7 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 	int	i;
 
 	i = 0;
-	while (i <= info->len)
+	while (i <= info->tall)
 	{
 		free(map[i]);
 		i++;
@@ -36,7 +36,7 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 
 void	print_error_msg(void)				//에러가 발생했을 때 에러메세지를 출력하는 함수
 {
-	write(1, "map error\n", 10);
+	write(2, "map error\n", 10);
 	exit(0);
 }
 
@@ -47,7 +47,7 @@ void	find_and_print(char *filename, t_info *info)	//파일 이름을 넘겨주�
 	map = map_mallocator(filename, info);
 	if (map == 0)
 	{
-		write(1, "map error\n", 10);
+		write(2, "map error\n", 10);
 		return ;
 	}
 	finder_main(map, info);
@@ -64,19 +64,19 @@ int	main(int argc, char *argv[])
 	{
 		if (make_input_file() == 0)
 			print_error_msg();
-		if (check_input("temptson", &info) == 0)
+		if (check_input("AJTCS", &info) == 0)
 			print_error_msg();
-		find_and_print("temptson", &info);
+		find_and_print("AJTCS", &info);
 	}
 	argv_idx = 1;
 	while (argv_idx < argc)								//지도 파일이 주어졌을때
 	{
 		init_info(&info);
 		if (check_input(argv[argv_idx], &info) == 0)
-			write(1, "map error\n", 10);
+			write(2, "map error\n", 10);
 		else
 			find_and_print(argv[argv_idx], &info);
-		if (argv_idx < argc - 1)
+		if (argv_idx < argc - 1)						//지도가 여러개 들어왔을때 각각의 출력결과 사이에 개행출력
 			write(1, "\n", 1);
 		argv_idx++;
 	}

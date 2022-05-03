@@ -6,80 +6,63 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:21:22 by tson              #+#    #+#             */
-/*   Updated: 2022/02/24 01:35:24 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/03 22:35:23 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "myheader.h"
 
-int	input_three_condition(char *str, t_info *p_info, int len)
+int	fill_obs_empty_ok(char *str, t_info *info, int f_len)
 {
-	if (!(str[len - 1] >= 32 && str[len - 1] <= 126))
+	if (!(32 <= str[f_len - 1] && str[f_len - 1] <= 126))
 		return (0);
-	p_info -> full = str[len - 1];
-	if (!(str[len - 2] >= 32 && str[len - 2] <= 126))
+	info->fill = str[f_len - 1];
+	if (!(32 <= str[f_len - 2] && str[f_len - 2] <= 126))
 		return (0);
-	p_info -> obs = str[len - 2];
-	if (!(str[len - 3] >= 32 && str[len - 3] <= 126))
+	info->obs = str[f_len - 2];
+	if (!(32 <= str[f_len - 3] && str[f_len - 3] <= 126))
 		return (0);
-	p_info -> empty = str[len - 3];
+	info->empty = str[f_len - 3];
 	return (1);
 }
 
-int	check_condition(char *str, t_info *p_info)
+int	check_condition(char *str, t_info *info)
 {
 	int	idx;
-	int	len;
+	int	f_len;
 
-	len = str_len(str);
-	if (len < 4)
+	f_len = str_len(str);
+	if (f_len < 4)								//첫줄에 필요한 요소가 적어도 네 개인데, 들어있는 정보가 네글자도 안되면 문제가있음. 에러
 		return (0);
-	if (input_three_condition(str, p_info, len) == 0)
+	if (fill_obs_empty_ok(str, info, f_len) == 0)
 		return (0);
-	if (is_same_char(p_info -> full, p_info -> obs)
-		|| is_same_char(p_info -> full, p_info -> empty)
-		|| is_same_char(p_info -> obs, p_info -> empty))
+	if (info->fill == info->obs
+		|| info->fill == info->empty
+		|| info->obs == info->empty)
 		return (0);
 	idx = 0;
-	while (idx < len - 3)
+	while (idx < f_len - 3)
 	{
-		if (!(str[idx] >= 48 && str[idx] <= 57))
+		if (!('0' <= str[idx] && str[idx] <= '9'))
 			return (0);
-		p_info -> len *= 10;
-		p_info -> len += str[idx] - 48;
+		info->tall = (info->tall * 10) + (str[idx] - '0');
 		idx++;
 	}
-	if (p_info -> len == 0)
+	if (info->tall == 0)
 		return (0);
 	return (1);
 }
 
-int	check_first_line(char *str, t_info *p_info)
-{
-	int	idx;
-
-	idx = 0;
-	while (str[idx] != '\0')
-	{
-		if (!((str[idx] == p_info -> empty) || (str[idx] == p_info -> obs)))
-			return (0);
-		idx++;
-	}
-	return (idx);
-}
-
-int	check_else_line(char *str, t_info *p_info)
+int	check_tall_line(char *str, t_info *info)		//유효성 검사
 {
 	int	idx;
 
 	idx = 0;
 	while (str[idx] != '\0')
 	{
-		if (!((str[idx] == p_info -> empty) || (str[idx] == p_info -> obs)))
+		if (!((str[idx] == info->empty) || (str[idx] == info->obs)))
 			return (0);
 		idx++;
 	}
-	if (idx != p_info -> wid)
-		return (0);
-	return (1);
+	return (idx);										//len반환. 유효성 검사에서 살아남은 idx가 곧 info->len
 }
