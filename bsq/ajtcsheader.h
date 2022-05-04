@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   myheader.h                                         :+:      :+:    :+:   */
+/*   ajtcsheader.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 18:40:15 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:29:52 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYHEADER_H
-# define MYHEADER_H
+#ifndef AJTCSHEADER_H
+# define AJTCSHEADER_H
 
 # include <fcntl.h>
 # include <unistd.h>
