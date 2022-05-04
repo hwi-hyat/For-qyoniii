@@ -6,7 +6,7 @@
 #    By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/24 00:12:48 by siykim            #+#    #+#              #
-#    Updated: 2022/02/24 11:58:21 by tson             ###   ########.fr        #
+#    Updated: 2022/05/04 22:21:52 by siykim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ NAME = bsq
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = main.c\
-	   1_0check_input1.c\
-	   1_1check_input2.c\
-	   1_2mystring.c\
-	   2_0map_maker.c\
-	   3_0square_finder.c\
-	   3_1square_finder_utilities.c
+	   1_0check_map.c\
+	   1_1check_detail.c\
+	   1_2make_AJTCS.c\
+	   2_0make_map.c\
+	   3_0find_square.c\
+	   3_1find_square_utils.c
 
 OBJECTS = $(SRCS:.c=.o)
 

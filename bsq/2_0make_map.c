@@ -6,11 +6,11 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:35:39 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/04 18:33:57 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:19:36 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myheader.h"
+#include "ajtcsheader.h"
 
 void	first_line_skip(int fd)								//지도파일의 첫번째 줄은 지도에대한 정보이고 지도내용이 아니니 건너뛰는 함수
 {
@@ -70,7 +70,6 @@ char	**malloc_err_free_map(char **map, int idx)			//동적할당을 진행하는
 	return (0);
 }
 
-#include<stdio.h>
 char	**map_malloc(char *filename, t_info *info)				//지도가 담긴 파일의 이름을 받아 동적할당을 사용해 지도를 저장하는 함수
 {
 	int		i;
@@ -89,7 +88,5 @@ char	**map_malloc(char *filename, t_info *info)				//지도가 담긴 파일의 
 	}
 	if (copy_map(map, filename, info->tall) == 0)
 		return (0);
-	//for(int i = 0; i < info->tall ; i++)
-	//	printf("map[%d] : %s\n", i, map[i]);
 	return (map);
 }

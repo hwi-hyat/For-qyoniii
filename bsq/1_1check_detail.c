@@ -6,11 +6,11 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:21:22 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:16 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:15:35 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myheader.h"
+#include "ajtcsheader.h"
 
 int	fill_obs_empty_ok(char *str, t_info *info, int f_len)		//지도를 표현하는 문자가 출력 가능한 문자인지 확인해주는 함수
 {

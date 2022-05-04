@@ -6,11 +6,11 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:09:24 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/04 16:27:02 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:15:48 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myheader.h"
+#include "ajtcsheader.h"
 
 void	sq_check(char **map, t_info *info, t_max *max, t_start co)		//인자로 전달받은 시작점에서 사각형의 크기를 점점 늘려보며 최대로 가능한 크기를 찾고, 그게 최댓값인지 찾는 함수
 {

@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 16:19:33 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 18:40:15 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_start
 
 typedef struct s_max			//가장 큰 정사각형의 정보를 저장하는 구조체, 가장 왼쪽 위 시작좌표와 크기를 저장
 {
-	int	max_x;				//시작좌표의 x좌표
-	int	max_y;				//시작좌표의 y좌표
+	int	max_x;					//시작좌표의 x좌표
+	int	max_y;					//시작좌표의 y좌표
 	int	max_size;				//가장 큰 사각형의 한 변의 길이
 }t_max;
 

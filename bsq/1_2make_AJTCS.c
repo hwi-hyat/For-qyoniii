@@ -6,11 +6,11 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:07 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:16:35 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:15:46 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myheader.h"
+#include "ajtcsheader.h"
 
 int	ft_strlen(char *str)
 {

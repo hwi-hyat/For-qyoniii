@@ -6,19 +6,19 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:16:44 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 18:27:41 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 22:22:05 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "myheader.h"
+#include "ajtcsheader.h"
 
 void	init_info(t_info *p_info)			//구조체 info안의 값들을 초기화 해 줌
 {
-	p_info -> empty = '\0';
-	p_info -> fill = '\0';
-	p_info -> obs = '\0';
-	p_info -> len = 0;
-	p_info -> tall = 0;
+	p_info->empty = '\0';
+	p_info->fill = '\0';
+	p_info->obs = '\0';
+	p_info->len = 0;
+	p_info->tall = 0;
 }
 
 void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을 할당해제하는 함수
