@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:16:44 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 15:06:54 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 18:27:41 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 	int	i;
 
 	i = 0;
-	while (i <= info->tall)					//2차원 배열이므로 내부 배열을 할당해놓은만큼 (tall만큼) 해제해줌
+	while (i < info->tall)					//2차원 배열이므로 내부 배열을 할당해놓은만큼 (tall만큼) 해제해줌
 	{
 		free(map[i]);
 		i++;
@@ -80,7 +80,7 @@ int	main(int argc, char *argv[])
 			write(1, "\n", 1);							//마지막 출력결과 이후에는 개행이 출력되면 안 됨
 		argv_idx++;
 	}
-	system("leaks bsq");								//제출전 지워주기
+	//system("leaks bsq");								//제출전 지워주기
 	return (0);
 }
 

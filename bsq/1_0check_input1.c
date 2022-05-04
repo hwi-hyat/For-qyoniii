@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:28:26 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:38:23 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 16:23:48 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	check_map(int fd, t_info *info)
 		temp_line[idx] = '\0';				//끝에 널문자 넣어줌
 		if (check_str(temp_line, count, info) == 0)			//복사해온 한 줄을 검사
 			return (0);
-		count++;											//한 줄씩 넘어갈때마다 카운트, 줄 수 세줌(파일의 첫 줄(ex 30.ox) 포함)
+		count++;											//한 줄씩 넘어갈때마다 카운트, 줄 수 세줌(파일의 첫 줄(ex "30.ox") 포함)
 	}
-	if ((count - 1) != info->tall)							//파일의 첫 줄(ex 30.ox)까지 세주었으니 그만큼 하나 빼줌
+	if ((count - 1) != info->tall)							//파일의 첫 줄(ex "30.ox")까지 세주었으니 그만큼 하나 빼줌
 		return (0);
 	return (1);
 }

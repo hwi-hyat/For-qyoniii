@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:39:21 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 16:19:33 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		make_input_file(void);
 char	**map_malloc(char *filename, t_info *info);
 void	finder_main(char **map, t_info *map_info);
 int		obs_chk(char c, t_info *map_info);
-void	is_it_max(t_start co, int size, t_max *max_sq);
+void	is_it_max(t_start co, int size, t_max *max);
 int		val_map_acc(t_start co, int size, t_info *map_info);
 void	printer(char **map, t_info *map_info);
 

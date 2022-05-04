@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:35:39 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/04 15:06:56 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 18:33:57 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	first_line_skip(int fd)								//지도파일의 첫번째 줄은 지도에
 		read(fd, &temp, 1);
 }
 
-void	line_copy_map(int fd, char *map_row)				//지도파일의 지도를 한 줄씩 읽어 map에 저장하는 함수
+void	line_copy_map(int fd, char *map_line)				//지도파일의 지도를 한 줄씩 읽어 map에 저장하는 함수
 {
 	int		i;
 	char	temp;
@@ -31,10 +31,10 @@ void	line_copy_map(int fd, char *map_row)				//지도파일의 지도를 한 줄
 	{
 		if (temp == '\n')									//줄 끝에는 무조건 개행이 나오게되니 개행을 만나게되면 줄이 끝났다는 뜻
 			break ;
-		map_row[i] = temp;
+		map_line[i] = temp;
 		i++;
 	}
-	map_row[i] = 0;
+	map_line[i] = 0;
 }
 
 int	copy_map(char **map, char *filename, int tall)			//할당한 map에 지도파일안의 지도 내용들을 복사해오는 함수
@@ -42,7 +42,7 @@ int	copy_map(char **map, char *filename, int tall)			//할당한 map에 지도�
 	int		i;
 	int		fd;
 
-	fd = open(filename, O_RDWR);								//지도파일을 open함수를 이용해 fd할당
+	fd = open(filename, O_RDWR);							//지도파일을 open함수를 이용해 fd할당
 	if (fd < 0)												//open 오류났을 때 고려
 		return (0);
 	first_line_skip(fd);									//지도파일의 첫번째 줄은 지도에대한 정보이고 지도내용이 아니니 건너뜀
@@ -56,7 +56,7 @@ int	copy_map(char **map, char *filename, int tall)			//할당한 map에 지도�
 	return (1);
 }
 
-char	**malloc_err_free_map(char **map, int idx)					//동적할당을 진행하는 도중에 에러가 났을 때 그 지점까지 할당해놓은
+char	**malloc_err_free_map(char **map, int idx)			//동적할당을 진행하는 도중에 에러가 났을 때 그 지점까지 할당해놓은
 {															//메모리를 할당해제해야함
 	int	i;
 
@@ -70,16 +70,17 @@ char	**malloc_err_free_map(char **map, int idx)					//동적할당을 진행하�
 	return (0);
 }
 
+#include<stdio.h>
 char	**map_malloc(char *filename, t_info *info)				//지도가 담긴 파일의 이름을 받아 동적할당을 사용해 지도를 저장하는 함수
 {
 	int		i;
 	char	**map;
 
 	i = 0;
-	map = (char **)malloc(sizeof(char *) * (info->tall + 1));	//tall만큼 이차원배열의 상위배열 할당
+	map = (char **)malloc(sizeof(char *) * info->tall);			//tall만큼 이차원배열의 상위배열 할당
 	if (map == NULL)
 		return (0);
-	while (i < (info->tall + 1))								//각각의 line을 저장해줄 이차원배열의 내부배열 할당
+	while (i < info->tall)										//각각의 line을 저장해줄 이차원배열의 내부배열 할당
 	{
 		map[i] = (char *)malloc(sizeof(char) * (info->len + 1));
 		if (map[i] == NULL)
@@ -88,5 +89,7 @@ char	**map_malloc(char *filename, t_info *info)				//지도가 담긴 파일의 
 	}
 	if (copy_map(map, filename, info->tall) == 0)
 		return (0);
+	//for(int i = 0; i < info->tall ; i++)
+	//	printf("map[%d] : %s\n", i, map[i]);
 	return (map);
 }

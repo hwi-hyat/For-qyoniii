@@ -12,13 +12,13 @@
 
 #include "myheader.h"
 
-void	is_it_max(t_start co, int size, t_max *max_sq)					//전달받은 사각형의 정보를 토대로 지금까지 봤던 사각형중 최대크기의 사각형인지 판단하고 저장하는 함수
+void	is_it_max(t_start co, int size, t_max *max)					//전달받은 사각형의 정보를 토대로 지금까지 봤던 사각형중 최대크기의 사각형인지 판단하고 저장하는 함수
 {
-	if (size > max_sq->max_size)
+	if (size > max->max_size)
 	{
-		max_sq->max_y = co.y;
-		max_sq->max_x = co.x;
-		max_sq->max_size = size;
+		max->max_y = co.y;
+		max->max_x = co.x;
+		max->max_size = size;
 	}
 }
 
