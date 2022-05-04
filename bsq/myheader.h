@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:27:31 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 14:39:21 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		check_condition(char *str, t_info *p_info);
 int		check_tall_line(char *str, t_info *p_info);
 int		check_str(char *str, int line_count, t_info *p_info);
 int		check_map(int fd, t_info *p_info);
-int		check_input(char *str, t_info *p_info);
+int		check_input(char *filename, t_info *p_info);
 int		make_input_file(void);
 char	**map_malloc(char *filename, t_info *info);
 void	finder_main(char **map, t_info *map_info);

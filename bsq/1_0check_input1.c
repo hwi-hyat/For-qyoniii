@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:28:26 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 14:25:11 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 14:38:23 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int	check_map(int fd, t_info *info)
 	return (1);
 }
 
-int	check_input(char *str, t_info *info)				//입력받은 파일을 열고 파일디스크럽터를 할당해줌
+int	check_input(char *filename, t_info *info)				//입력받은 파일을 열고 파일디스크럽터를 할당해줌
 {
 	int		fd;
 
-	fd = open(str, O_RDONLY);							//지도파일을 열어서 파일디스크립터 할당
+	fd = open(filename, O_RDONLY);							//지도파일을 열어서 파일디스크립터 할당
 	if (fd == -1)
 		return (0);
 	if (check_map(fd, info) == 0)

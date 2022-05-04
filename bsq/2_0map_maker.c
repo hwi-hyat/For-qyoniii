@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 01:35:39 by siykim            #+#    #+#             */
-/*   Updated: 2022/05/04 14:27:23 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 15:06:56 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	line_copy_map(int fd, char *map_row)				//지도파일의 지도를 한 줄
 	map_row[i] = 0;
 }
 
-int	copy_map(char **map, char *filename, int length)			//할당한 map에 지도파일안의 지도 내용들을 복사해오는 함수
+int	copy_map(char **map, char *filename, int tall)			//할당한 map에 지도파일안의 지도 내용들을 복사해오는 함수
 {
 	int		i;
 	int		fd;
@@ -47,7 +47,7 @@ int	copy_map(char **map, char *filename, int length)			//할당한 map에 지도
 		return (0);
 	first_line_skip(fd);									//지도파일의 첫번째 줄은 지도에대한 정보이고 지도내용이 아니니 건너뜀
 	i = 0;
-	while (i < length)										//지도를 한 줄씩 복사 해 옴
+	while (i < tall)										//지도를 한 줄씩 복사 해 옴
 	{
 		line_copy_map(fd, map[i]);
 		i++;
