@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_1check_input2.c                                  :+:      :+:    :+:   */
+/*   1_1check_detail.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:21:22 by tson              #+#    #+#             */
-/*   Updated: 2022/05/04 22:15:35 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/05 02:27:03 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	fill_obs_empty_ok(char *str, t_info *info, int f_len)		//지도를 표현하
 	return (1);
 }
 
-int	check_condition(char *str, t_info *info)
+int	check_condition(char *str, t_info *info)	//첫 줄에서 알려주는 지도에대한 요소들을 알아내 저장하는 함수
 {
 	int	idx;
 	int	f_len;
