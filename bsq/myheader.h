@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:27:05 by tson              #+#    #+#             */
-/*   Updated: 2022/05/03 22:35:13 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 14:27:31 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_info			//지도의 기본적인 정보들을 저장해놓는 �
 	int		tall;				//입력받은 지도의 길이
 }t_info;
 
-int		str_len(char *str);
+int		ft_strlen(char *str);
 int		fill_obs_empty_ok(char *str, t_info *p_info, int len);
 int		check_condition(char *str, t_info *p_info);
 int		check_tall_line(char *str, t_info *p_info);
@@ -47,7 +47,7 @@ int		check_str(char *str, int line_count, t_info *p_info);
 int		check_map(int fd, t_info *p_info);
 int		check_input(char *str, t_info *p_info);
 int		make_input_file(void);
-char	**map_mallocator(char *argv, t_info *info);
+char	**map_malloc(char *filename, t_info *info);
 void	finder_main(char **map, t_info *map_info);
 int		obs_chk(char c, t_info *map_info);
 void	is_it_max(t_start co, int size, t_max *max_sq);

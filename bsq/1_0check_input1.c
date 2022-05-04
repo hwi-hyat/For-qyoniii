@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:28:26 by tson              #+#    #+#             */
-/*   Updated: 2022/05/03 22:54:39 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 14:25:11 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	check_str(char *str, int line_count, t_info *info)
 {
-	if (line_count == 0)
+	if (line_count == 0)							//파일의 첫번째 줄에서는 지도에 대한 정보가 있고 그 내용을 저장
 	{
 		if (check_condition(str, info) == 0)
 			return (0);
 	}
 	else if (line_count == 1)						//tall의 첫번째 줄에서는 info->len의 길이를 측정
 	{
-		info->len = check_tall_line(str, info);
+		info->len = check_tall_line(str, info);		//유효성검사 후 tall의 값을 반환받아 저장
 		if (info->len == 0)
 			return (0);
 	}
-	else											//tall의 그 이후 줄에서는 재놓은 info->len의 길이와 같은지 판단
-	{
+	else											//tall의 첫번째 이후 줄의 길이가 재놓은 info->len의 길이와 같은지 판단
+	{												//다른게 있음 오류
 		if (check_tall_line(str, info) != info->len)
 			return (0);
 	}
@@ -42,22 +42,22 @@ int	check_map(int fd, t_info *info)
 	int		count;							//tall이랑 비교
 
 	count = 0;
-	while (read(fd, &buf, 1) > 0)			//반복문을 이용해서 계속해서 버퍼에 파일내용을 한 바이트씩 읽어줌, 끝까지 다 읽으면 read함수가 0을 리턴, 반복문 종료.
+	while (read(fd, &buf, 1) > 0)			//끝까지 다 읽으면 read함수가 0을 리턴, 반복문 종료.
 	{
 		idx = 0;
 		while (buf != '\n')					//파일의 한 줄의 끝까지 읽어들임
 		{
-			temp_line[idx] = buf;
+			temp_line[idx] = buf;			//temp_line에 한 줄의 내용을 저장
 			idx++;
 			if (read(fd, &buf, 1) <= 0)
 				return (0);
 		}
-		temp_line[idx] = '\0';
-		if (check_str(temp_line, count, info) == 0)
+		temp_line[idx] = '\0';				//끝에 널문자 넣어줌
+		if (check_str(temp_line, count, info) == 0)			//복사해온 한 줄을 검사
 			return (0);
-		count++;
+		count++;											//한 줄씩 넘어갈때마다 카운트, 줄 수 세줌(파일의 첫 줄(ex 30.ox) 포함)
 	}
-	if ((count - 1) != info->tall)						//first line(ex 30.ox)까지 세주었으니 그만큼 하나 빼줌
+	if ((count - 1) != info->tall)							//파일의 첫 줄(ex 30.ox)까지 세주었으니 그만큼 하나 빼줌
 		return (0);
 	return (1);
 }

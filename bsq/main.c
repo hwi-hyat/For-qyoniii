@@ -6,7 +6,7 @@
 /*   By: siykim <siykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:16:44 by tson              #+#    #+#             */
-/*   Updated: 2022/05/03 23:05:54 by siykim           ###   ########.fr       */
+/*   Updated: 2022/05/04 14:32:32 by siykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 	int	i;
 
 	i = 0;
-	while (i <= info->tall)
+	while (i <= info->tall)					//2차원 배열이므로 내부 배열을 할당해놓은만큼 (tall만큼) 해제해줌
 	{
 		free(map[i]);
 		i++;
@@ -36,7 +36,7 @@ void	free_map(char **map, t_info *info)	//동적할당 해 놓은 지도(map)을
 
 void	print_error_msg(void)				//에러가 발생했을 때 에러메세지를 출력하는 함수
 {
-	write(2, "map error\n", 10);
+	write(2, "map error\n", 10);			//write 에 fd 2를 넣어 표준오류로 출력
 	exit(0);
 }
 
@@ -44,7 +44,7 @@ void	find_and_print(char *filename, t_info *info)	//파일 이름을 넘겨주�
 {
 	char	**map;
 
-	map = map_mallocator(filename, info);
+	map = map_malloc(filename, info);
 	if (map == 0)
 	{
 		write(2, "map error\n", 10);
@@ -77,8 +77,11 @@ int	main(int argc, char *argv[])
 		else
 			find_and_print(argv[argv_idx], &info);
 		if (argv_idx < argc - 1)						//지도가 여러개 들어왔을때 각각의 출력결과 사이에 개행출력
-			write(1, "\n", 1);
+			write(1, "\n", 1);							//마지막 출력결과 이후에는 개행이 출력되면 안 됨
 		argv_idx++;
 	}
 	return (0);
 }
+
+/* mapmaker 쓰는법
+"perl mapmaker (가로길이) (세로길이) (장애물밀도) > (파일이름)" */

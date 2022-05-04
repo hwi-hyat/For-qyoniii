@@ -12,7 +12,7 @@
 
 #include "myheader.h"
 
-void	is_it_max(t_start co, int size, t_max *max_sq)
+void	is_it_max(t_start co, int size, t_max *max_sq)					//전달받은 사각형의 정보를 토대로 지금까지 봤던 사각형중 최대크기의 사각형인지 판단하고 저장하는 함수
 {
 	if (size > max_sq->max_size)
 	{
@@ -22,16 +22,20 @@ void	is_it_max(t_start co, int size, t_max *max_sq)
 	}
 }
 
-int	val_map_acc(t_start co, int size, t_info *map_info)
+int	val_map_acc(t_start co, int size, t_info *map_info)						//그려내는 사각형이 지도를 벗어나는지 확인해주는 함수
 {
 	if ((co.y + size) == map_info->tall || (co.x + size) == map_info->len)
 		return (2);
 	else if ((co.y + size) < map_info->tall || (co.x + size) < map_info->len)
 		return (1);
 	return (0);
+
+	//반환값 2: 사각형이 지도의 경계까지 찼을 때
+	//반환값 1: 사각형이 지도의 안에 있을 때
+	//반환값 0: 사각형이 지도를 벗어났을 때
 }
 
-void	printer(char **map, t_info *map_info)
+void	printer(char **map, t_info *map_info)				//사각형이 채워진 map을 출력하는 함수
 {
 	int	i;
 	int	j;
